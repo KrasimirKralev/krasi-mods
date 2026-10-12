@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 312" width="880" height="312" role="img" aria-labelledby="t d">
+  <title id="t">How model-guard picks a subagent's model</title>
+  <desc id="d">Three Agent calls, left to right. A call asking for haiku matches the rule haiku to sonnet and runs on sonnet. A call that names no model, or inherit, takes the default and runs on sonnet. A call asking for opus matches no rule and runs on opus, unchanged.</desc>
+  <style>
+    .ground { fill: #ffffff; stroke: #d0d7de; }
+    .box { fill: #f6f8fa; stroke: #d0d7de; }
+    .hit { fill: #ddf4ff; stroke: #54aeff; }
+    .head { fill: #59636e; font: 600 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; letter-spacing: 0.04em; }
+    .code { fill: #1f2328; font: 15px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .note { fill: #59636e; font: 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .arrow { stroke: #818b98; stroke-width: 2; fill: none; }
+    .tip { fill: #818b98; }
+    @media (prefers-color-scheme: dark) {
+      .ground { fill: #0d1117; stroke: #30363d; }
+      .box { fill: #161b22; stroke: #30363d; }
+      .hit { fill: #0c2d6b; stroke: #4493f8; }
+      .head, .note { fill: #9198a1; }
+      .code { fill: #e6edf3; }
+      .arrow { stroke: #656c76; }
+      .tip { fill: #656c76; }
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path class="tip" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="ground" x="0.5" y="0.5" width="879" height="311" rx="12"/>
+
+  <text class="head" x="32" y="44">THE AGENT CALL ASKS FOR</text>
+  <text class="head" x="322" y="44">MODEL-GUARD CHECKS</text>
+  <text class="head" x="672" y="44">THE SUBAGENT RUNS ON</text>
+
+  <!-- a named model that a rule matches -->
+  <rect class="box" x="24" y="64" width="232" height="48" rx="8"/>
+  <text class="code" x="44" y="94">model: "haiku"</text>
+  <path class="arrow" d="M258 88 H310" marker-end="url(#a)"/>
+  <rect class="hit" x="314" y="64" width="312" height="48" rx="8"/>
+  <text class="code" x="334" y="94">rule  haiku → sonnet</text>
+  <path class="arrow" d="M628 88 H660" marker-end="url(#a)"/>
+  <rect class="hit" x="664" y="64" width="192" height="48" rx="8"/>
+  <text class="code" x="684" y="94">sonnet</text>
+
+  <!-- no model named: the default answers -->
+  <rect class="box" x="24" y="134" width="232" height="48" rx="8"/>
+  <text class="code" x="44" y="164">no model / inherit</text>
+  <path class="arrow" d="M258 158 H310" marker-end="url(#a)"/>
+  <rect class="hit" x="314" y="134" width="312" height="48" rx="8"/>
+  <text class="code" x="334" y="164">default  sonnet</text>
+  <path class="arrow" d="M628 158 H660" marker-end="url(#a)"/>
+  <rect class="hit" x="664" y="134" width="192" height="48" rx="8"/>
+  <text class="code" x="684" y="164">sonnet</text>
+
+  <!-- a named model no rule matches -->
+  <rect class="box" x="24" y="204" width="232" height="48" rx="8"/>
+  <text class="code" x="44" y="234">model: "opus"</text>
+  <path class="arrow" d="M258 228 H310" marker-end="url(#a)"/>
+  <rect class="box" x="314" y="204" width="312" height="48" rx="8"/>
+  <text class="code" x="334" y="234">no rule matches</text>
+  <path class="arrow" d="M628 228 H660" marker-end="url(#a)"/>
+  <rect class="box" x="664" y="204" width="192" height="48" rx="8"/>
+  <text class="code" x="684" y="234">opus</text>
+
+  <text class="note" x="32" y="286">Settings: default = sonnet, rules = [{"match": "haiku", "model": "sonnet"}]. Unset, every call passes through.</text>
+</svg>
