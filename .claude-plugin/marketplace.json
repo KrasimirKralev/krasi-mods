@@ -1,0 +1,20 @@
+{
+  "name": "krasi-mods",
+  "owner": {
+    "name": "Krasimir Kralev",
+    "url": "https://github.com/KrasimirKralev"
+  },
+  "metadata": {
+    "description": "Small Claude Code mods (function-hooks plugins). Unofficial; not affiliated with Anthropic."
+  },
+  "plugins": [
+    {
+      "name": "model-guard",
+      "source": "./plugins/model-guard",
+      "description": "Choose the model each subagent runs on, by rule. Does nothing until you configure it.",
+      "version": "1.0.0",
+      "category": "development",
+      "keywords": ["subagents", "model", "routing", "function-hooks", "mod"]
+    }
+  ]
+}

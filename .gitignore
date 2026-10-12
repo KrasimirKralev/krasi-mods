@@ -1,0 +1,4 @@
+# Type declarations Claude Code lays beside a mod it loads from a folder; regenerated, never edited.
+**/.claude-plugin/types/
+node_modules/
+.DS_Store
