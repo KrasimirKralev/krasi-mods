@@ -1,0 +1,34 @@
+{
+  "name": "model-guard",
+  "version": "1.0.0",
+  "description": "Choose the model each subagent runs on, by rule. Does nothing until you configure it.",
+  "author": {
+    "name": "Krasimir Kralev",
+    "url": "https://github.com/KrasimirKralev"
+  },
+  "homepage": "https://github.com/KrasimirKralev/krasi-mods#readme",
+  "repository": "https://github.com/KrasimirKralev/krasi-mods",
+  "license": "MIT",
+  "keywords": ["subagents", "model", "routing", "function-hooks", "mod"],
+  "userConfig": {
+    "default": {
+      "type": "string",
+      "title": "Default model",
+      "description": "Model for a subagent whose call names none (no model, or inherit): an alias such as sonnet, a full model id, or inherit for the main model. Empty leaves it to Claude Code.",
+      "default": ""
+    },
+    "rules": {
+      "type": "string",
+      "title": "Rules (JSON)",
+      "description": "JSON array of {\"match\": \"<regex>\", \"model\": \"<alias or id>\"}, checked in order against the model a call names. The first match decides; no match leaves the call alone. Example: [{\"match\": \"haiku\", \"model\": \"sonnet\"}]",
+      "default": ""
+    },
+    "forks": {
+      "type": "string",
+      "title": "Forks",
+      "description": "A fork always runs on the main model. passthrough lets it start; deny refuses it so the caller starts a regular subagent instead.",
+      "default": "passthrough",
+      "options": ["passthrough", "deny"]
+    }
+  }
+}
